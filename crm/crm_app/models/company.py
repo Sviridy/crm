@@ -2,7 +2,7 @@ from django.db import models
 from crm_app.models import Employee
 
 
-class Contacts(models.Model):
+class Company(models.Model):
     full_name = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=50, unique=True)
     responsible = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
@@ -11,7 +11,11 @@ class Contacts(models.Model):
     phone_number_or_fax = models.IntegerField()
     address = models.TextField(max_length=100, blank=True)
     e_mail = models.EmailField(max_length=100)
-    ynp = models.IntegerField(max_length=9)
+    ynp = models.IntegerField(max_length=9, blank=True)
+    kpp = models.IntegerField(max_length=9, blank=True)
+    legal_address = models.TextField(max_length=100, blank=True)
+    b_s = models.CharField(max_length=28, blank=True)
+    bank = models.CharField(max_length=100, blank=True)
 
 
     def contact(self):
