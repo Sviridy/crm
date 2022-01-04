@@ -1,0 +1,4 @@
+.idea,/__pycache__/
+.idea
+myprojectenv
+crm/crm/__pycache__/*
