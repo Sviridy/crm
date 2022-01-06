@@ -11,12 +11,11 @@ class Company(models.Model):
     phone_number_or_fax = models.IntegerField()
     address = models.TextField(max_length=100, blank=True)
     e_mail = models.EmailField(max_length=100)
-    ynp = models.IntegerField(max_length=9, blank=True)
-    kpp = models.IntegerField(max_length=9, blank=True)
+    ynp = models.IntegerField(blank=True)
+    kpp = models.IntegerField(blank=True)
     legal_address = models.TextField(max_length=100, blank=True)
     b_s = models.CharField(max_length=28, blank=True)
     bank = models.CharField(max_length=100, blank=True)
-
 
     def contact(self):
         pass

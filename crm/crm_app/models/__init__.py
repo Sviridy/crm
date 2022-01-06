@@ -7,5 +7,3 @@ from crm_app.models.funnel import Funnel
 from crm_app.models.proposal import Proposal
 from crm_app.models.deal import Deal
 from crm_app.models.payment import Payment
-
-

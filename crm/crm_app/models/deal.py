@@ -11,9 +11,10 @@ class Deal(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     documents = models.FileField(upload_to='documents/', blank=True)
 
+    @property
     def stage(self):
         """Этап"""
-        pass
+        return self.proposal_set.all()
 
     def price(self):
         pass

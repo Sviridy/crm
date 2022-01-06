@@ -13,4 +13,3 @@ class Proposal(models.Model):
     contacts = models.ForeignKey(Contacts, on_delete=models.SET_NULL, null=True, blank=True)
     tasks = models.ForeignKey(Tasks, on_delete=models.SET_NULL, null=True, blank=True)
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True)
-

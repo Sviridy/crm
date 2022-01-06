@@ -2,3 +2,4 @@
 .idea
 myprojectenv
 crm/crm/__pycache__/*
+*.pyc

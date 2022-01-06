@@ -1,0 +1,288 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    /*font-family: Arial Narrow, sans-serif;*/
+    font-size: 16px;
+    /*color: #304377;*/
+    margin: 0;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    /*border-bottom: 1px solid #A68540;*/
+}
+
+/* Intro */
+.intro {
+    display: flex;
+    /*flex-direction: column;*/
+    margin: 50px 0 0 0;
+    font-size: 18px;
+    /*justify-content: center;*/
+    width: 100%;
+    height: 100vh;
+    background-color: #f8f7f7;
+    /*background: url("../image/background.jpg") center no-repeat;*/
+    /*-webkit-background-size: cover;*/
+    /*background-size: cover;*/
+
+}
+
+.intro__inner {
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    /*width: 100;*/
+    max-width: 1366px;
+    margin: 0 0 0 90px;
+
+}
+/* Header */
+.header {
+    width: 100%;
+    position: fixed;
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #f8f7f7;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    background: #2d2e35;
+    /*border-right: 1px solid #A68540;*/
+    /*border-top: 1px solid #A68540;*/
+    /*border-left: 1px solid #A68540;*/
+}
+
+.header__logo {
+    font-size: 30px;
+    width: 90px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    /*margin: 0 65px 0 65px;*/
+}
+
+.header_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Nav */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+
+}
+.nav_link {
+    display: block;
+    background: #30a166;
+    color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+ul {
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем отступы*/
+    padding-left: 0; /*убираем отступы*/
+    height: 50px; /*задаем высоту*/
+}
+
+a {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    background: #2d2e35; /*добавляем фон к пункту меню*/
+    color: #6e6f77; /*меняем цвет ссылок*/
+    padding: 0 15px; /*добавляем отступ*/
+    /*font-family: arial; !*меняем шрифт*!*/
+    line-height: 50px; /*ровняем меню по вертикали*/
+    display: block;
+    /*border-right: 1px solid #82A8A8; !*добавляем бордюр справа*!*/
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+}
+
+a:hover {
+    color: white;
+    /*background: #f1a6a6; !*добавляем эффект при наведении*!*/
+}
+
+li {
+    float: left; /*Размещаем список горизонтально для реализации меню*/
+    position: relative; /*задаем позицию для позиционирования*/
+}
+
+/*Стили для скрытого выпадающего меню*/
+li > ul {
+    position: absolute;
+    top: 50px;
+    /*left: -40px;*/
+    display: none;
+    /*border-top: 1px solid #A68540;*/
+}
+
+/*Делаем скрытую часть видимой*/
+li:hover > ul {
+    display: block;
+    width: 155px; /*Задаем ширину выпадающего меню*/
+}
+
+li:hover > ul > li {
+    float: none; /*Убираем горизонтальное позиционирование*/
+}
+
+.left_menu {
+    width: 100%;
+    max-width: 90px;
+    /*border: 1px solid #A68540;*/
+    position: fixed;
+    height: 100%;
+    max-height: 575px;
+    background: #2d2e35;
+}
+
+.left_choice {
+    /*height: 100%;*/
+    /*max-height: 50px;*/
+    /*background: #FFDFC5;*/
+    font-size: 18px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    display: block;
+    color: #6e6f77;
+    margin: 0;
+    /*border-bottom: 1px solid #A68540;*/
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+}
+
+.left_choice:hover {
+    color: white;
+    /*background: #f1a6a6;*/
+}
+
+/* Table */
+
+table {
+    /*font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;*/
+    font-size: 12px;
+    background: white;
+    max-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    /*box-shadow: 0 5px 10px #ccc;*/
+}
+
+th {
+    font-weight: normal;
+    color: #312e2e;
+    padding: 5px 0;
+    border-top: 1px solid #afafb6;
+    border-bottom: 1px solid #afafb6;
+}
+
+td {
+    color: #312e2e;
+    border-bottom: 1px solid #afafb6;
+    padding: 10px 15px;
+}
+
+tr:hover td {
+    background: #e8edff;
+}
+
+.menu__inner {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.add__link {
+    padding: 0 15px; /*добавляем отступ*/
+    line-height: 36px;
+    margin: 5px 0 5px 0;
+    height: 35px;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    background: #30a166;
+    color: white;
+}
+
+.add__link:hover {
+    background: #2d2e35;
+}
+
+.edit__link {
+    /*padding: 0 15px; !*добавляем отступ*!*/
+    line-height: 10px;
+    margin:0 0 0 20px;
+    max-width: 0;
+    /*width: 55px;*/
+    /*margin: 5px 0 5px 0;*/
+    /*height: 35px;*/
+    padding: 0 0;
+    text-align: center;
+    font-size: 18px;
+    display: block;
+    /*border-radius: 50%;*/
+    background: white;
+    color: black;
+}
+
+.edit__link:hover {
+    background: #e8edff;
+    color: black;
+}
+
+
+.del__link {
+    /*padding: 0 15px; !*добавляем отступ*!*/
+    line-height: 10px;
+    margin:0 0 0 13px;
+    max-width: 0;
+    /*width: 55px;*/
+    /*margin: 5px 0 5px 0;*/
+    /*height: 35px;*/
+    padding: 0 0;
+    text-align: center;
+    font-size: 18px;
+    display: block;
+    /*border-radius: 50%;*/
+    background: white;
+    color: black;
+}
+.list_table {
+    padding: 0 15px;
+    line-height: 36px;
+    margin: 5px 5px 5px 5px;
+    text-align: center;
+    height: 35px;
+}
+
+.choice_top {
+    background: #6e6f77;
+    color: #2d2e35;
+}
