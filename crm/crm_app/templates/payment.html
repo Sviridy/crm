@@ -31,9 +31,9 @@
                         <li><a href="{% url 'proposal' %}">Заявки</a></li>
                         <li><a href="{% url 'deal' %}">Сделки</a></li>
                         <li><a href="{% url 'contacts' %}">Контакты</a></li>
-                        <li><a class='choice_top' href="{% url 'employee' %}">Сотрудники</a></li>
+                        <li><a href="{% url 'employee' %}">Сотрудники</a></li>
                         <li><a href="{% url 'tasks' %}">Задачи</a></li>
-                        <li><a href="{% url 'payment' %}">Оплаты</a></li>
+                        <li><a class='choice_top' href="{% url 'payment' %}">Оплаты</a></li>
                     </ul>
                 </nav>
             </div>
@@ -57,30 +57,26 @@
         </div>
         <div class="intro__inner">
             <div class="menu__inner">
-                <div class="list_table">Все сотрудники</div>
-                <div><a class="add__link" href="{% url 'add_employee' %}">+</a></div>
+                <div class="list_table">Все оплаты</div>
+                <div><a class="add__link" href="{% url 'add_payment' %}">+</a></div>
             </div>
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Имя</th>
-                    <th>Дата рождения</th>
-                    <th>Номер</th>
-                    <th>Должность</th>
-                    <th>e_mail</th>
+                    <th>Сделка</th>
+                    <th>Дата</th>
+                    <th>Цена</th>
                     <th>Изменить</th>
                     <th>Удалить</th>
                 </tr>
-                {% for e in employee %}
+                {% for p in payment%}
                 <tr>
-                    <td>{{e.id}}</td>
-                    <td>{{e.name}}</td>
-                    <td>{{e.date_of_birth}}</td>
-                    <td>375{{e.phone_number}}</td>
-                    <td>{{e.post}}</td>
-                    <td>{{e.e_mail}}</td>
-                    <td><a class='edit__link' href="{{ e.get_absolute_url }}">✎</a></td>
-                    <td><a class="del__link" href="{{ e.get_id }}" onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
+                    <td>{{p.id}}</td>
+                    <td>{{p.deal}}</td>
+                    <td>{{p.date}}</td>
+                    <td>{{p.price}}</td>
+                    <td><a class='edit__link' href="{{ p.get_absolute_url }}">✎</a></td>
+                    <td><a class="del__link" href="{{ p.get_id }}" onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
                 </tr>
                 {% endfor %}
             </table>
