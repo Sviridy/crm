@@ -17,8 +17,7 @@ class Proposal(models.Model):
     tasks = models.ForeignKey(Tasks, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Задача')
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Компания')
 
-    def __str__(self):
-        return self.name
+
 
     def get_absolute_url(self):
         """Get id"""
@@ -27,6 +26,10 @@ class Proposal(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_proposal', kwargs={'proposal_id': self.pk})
+
+    def print(self):
+        """Get id"""
+        return reverse('print_proposal', kwargs={'proposal_id': self.pk})
 
     class Meta:
         ordering = ['pk']

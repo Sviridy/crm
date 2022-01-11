@@ -2,6 +2,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
 from crm_app.models import Proposal
+import os
+import sys
+from datetime import datetime
+from docxtpl import DocxTemplate
 
 
 class ProposalHome(ListView):
@@ -53,3 +57,19 @@ def delete_proposal(request, proposal_id):
     """Delete employee"""
     Proposal.objects.get(id=proposal_id).delete()
     return HttpResponseRedirect("/proposal/")
+
+
+def print_proposal(request, proposal_id):
+    """Delete employee"""
+    d = Proposal.objects.get(id=proposal_id)
+    print(type(d.price))
+    sys.path.append('D:\\Python\\crm\\crm\\media\\documents')
+    os.chdir(sys.path[-1])
+    a = datetime.now()
+    doc = DocxTemplate('example.docx')
+    context = {'name': d.price}
+    doc.render(context)
+    b = f'{a.date()}_{a.hour}-{a.minute}-{a.second}'
+    doc.save(f'Template_render{b}.docx')
+    os.system(f'start D:\\Python\\crm\\crm\\media\\documents\\Template_render{b}.docx')
+    return HttpResponseRedirect(f"/proposal/{proposal_id}")

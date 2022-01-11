@@ -13,6 +13,9 @@ class Tasks(models.Model):
     deadline = models.DateTimeField(blank=True, verbose_name='Дедлайн')
     note = models.TextField(max_length=500, blank=True, verbose_name='Описание')
 
+    def __str__(self):
+        return self.name
+
     def get_absolute_url(self):
         """Get id"""
         return reverse('edit_tasks', kwargs={'tasks_id': self.pk})

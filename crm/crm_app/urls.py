@@ -27,6 +27,7 @@ urlpatterns = [
     path('proposal/add_proposal', AddProposal.as_view(), name='add_proposal'),
     path('proposal/<int:proposal_id>/', EditProposal.as_view(), name='edit_proposal'),
     path('proposal/delete/<int:proposal_id>/', delete_proposal, name='delete_proposal'),
+    path('proposal/print/<int:proposal_id>/', print_proposal, name='print_proposal'),
     path('deal/', DealHome.as_view(), name='deal'),
     path('deal/add_deal', AddDeal.as_view(), name='add_deal'),
     path('deal/<int:deal_id>/', EditDeal.as_view(), name='edit_deal'),

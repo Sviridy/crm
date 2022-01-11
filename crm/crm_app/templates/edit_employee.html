@@ -63,7 +63,7 @@
             </div>
             <div class="add_employee">
                 <div class="add_center">
-                    <form method="post" id="data_add">
+                    <form method="post" id="data_add" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% for f in form %}
                         <nav class="add_nav">

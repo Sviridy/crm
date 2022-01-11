@@ -10,9 +10,9 @@
     <div class="container">
         <div class="header__inner">
             <div class="header_div">
-<!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
-<!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
-<!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
                 <div class="header__logo"><img src="/static/image/003-crm.png"></div>
                 <nav class="nav">
                     <ul>
@@ -63,6 +63,7 @@
             <table>
                 <tr>
                     <th>ID</th>
+                    <th>Фото</th>
                     <th>Имя</th>
                     <th>Дата рождения</th>
                     <th>Номер</th>
@@ -72,16 +73,21 @@
                     <th>Удалить</th>
                 </tr>
                 {% for e in employee %}
-                <tr>
-                    <td>{{e.id}}</td>
-                    <td>{{e.name}}</td>
-                    <td>{{e.date_of_birth}}</td>
-                    <td>375{{e.phone_number}}</td>
-                    <td>{{e.post}}</td>
-                    <td>{{e.e_mail}}</td>
-                    <td><a class='edit__link' href="{{ e.get_absolute_url }}">✎</a></td>
-                    <td><a class="del__link" href="{{ e.get_id }}" onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
-                </tr>
+                    <tr>
+                        <td>{{ e.id }}</td>
+                        <td class="image">{% if e.photo %}
+                            <p><img class="img" src="{{ e.photo.url }}"></p>
+                        {% endif %}
+                        </td>
+                        <td>{{ e.name }}</td>
+                        <td>{{ e.date_of_birth }}</td>
+                        <td>375{{ e.phone_number }}</td>
+                        <td>{{ e.post }}</td>
+                        <td>{{ e.e_mail }}</td>
+                        <td><a class='edit__link' href="{{ e.get_absolute_url }}">✎</a></td>
+                        <td><a class="del__link" href="{{ e.get_id }}"
+                               onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
+                    </tr>
                 {% endfor %}
             </table>
         </div>
