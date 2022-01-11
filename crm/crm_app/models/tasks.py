@@ -20,3 +20,6 @@ class Tasks(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_tasks', kwargs={'tasks_id': self.pk})
+
+    class Meta:
+        ordering = ['pk']

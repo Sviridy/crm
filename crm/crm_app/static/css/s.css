@@ -172,7 +172,8 @@ li:hover > ul > li {
     text-align: center;
     display: block;
     color: #6e6f77;
-    margin: 0;
+    border:15px;
+    margin: 0 20px;
     /*border-bottom: 1px solid #A68540;*/
     -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
     -o-transition: all 0.3s 0.01s ease;
@@ -240,15 +241,15 @@ tr:hover td {
 .edit__link {
     /*padding: 0 15px; !*добавляем отступ*!*/
     line-height: 10px;
-    margin: 0 0 0 20px;
-    max-width: 0;
-    /*width: 55px;*/
+    /*margin: auto auto;*/
+    /*max-width: 0;*/
+    /*width: 1%;*/
     /*margin: 5px 0 5px 0;*/
     /*height: 35px;*/
-    padding: 0 0;
+    padding: 0;
     text-align: center;
     font-size: 18px;
-    display: block;
+    /*display: block;*/
     /*border-radius: 50%;*/
     background: white;
     color: black;
@@ -257,8 +258,8 @@ tr:hover td {
 .edit__link_tasks {
     /*padding: 0 15px; !*добавляем отступ*!*/
     line-height: 10px;
-    margin: 0 0 0 11px;
-    max-width: 0;
+    /*margin: 0 auto;*/
+    /*max-width: 0;*/
     /*width: 55px;*/
     /*margin: 5px 0 5px 0;*/
     /*height: 35px;*/
@@ -280,8 +281,8 @@ tr:hover td {
 .del__link {
     /*padding: 0 15px; !*добавляем отступ*!*/
     line-height: 10px;
-    margin: 0 0 0 13px;
-    max-width: 0;
+    /*margin: 0 auto;*/
+    /*max-width: 0;*/
     /*width: 55px;*/
     /*margin: 5px 0 5px 0;*/
     /*height: 35px;*/
@@ -297,8 +298,8 @@ tr:hover td {
 .del__link_tasks {
     /*padding: 0 15px; !*добавляем отступ*!*/
     line-height: 10px;
-    margin: 0 0 0 5px;
-    max-width: 0;
+    /*margin: 0 auto;*/
+    /*max-width: 0;*/
     /*width: 55px;*/
     /*margin: 5px 0 5px 0;*/
     /*height: 35px;*/
@@ -480,3 +481,57 @@ textarea {
     background-color: white;
     box-shadow: 0 0 5px #6e6f77;
 }
+
+/* Charts */
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+/*.li {*/
+/*    vertical-align: middle;*/
+/*    top: 0;*/
+/*    left: 90px;*/
+/*    max-width: 1000px;*/
+/*    !*display: block;*!*/
+
+/*    width: 1550px;*/
+/*}*/

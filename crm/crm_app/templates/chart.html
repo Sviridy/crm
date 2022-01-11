@@ -10,9 +10,9 @@
     <div class="container">
         <div class="header__inner">
             <div class="header_div">
-<!--                                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
-<!--                                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
-<!--                                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
                 <div class="header__logo"><img src="/static/image/003-crm.png"></div>
                 <nav class="nav">
                     <ul>
@@ -43,7 +43,8 @@
         </div>
     </div>
 </header>
-
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 <body>
 <div class="intro">
     <div class="container">
@@ -57,31 +58,18 @@
         </div>
         <div class="intro__inner">
             <div class="menu__inner">
-                <div class="list_table">Добавление компании</div>
-                <!--                <div><a class="add__link" href="{% url 'add_employee' %}">+</a></div>-->
-                <div></div>
+                <div class="list_table">Диаграммы</div>
             </div>
-            <div class="add_employee">
-                <div class="add_center">
-                    <form method="post" id="data_add">
-                        {% csrf_token %}
-                        {% for f in form %}
-                        <nav class="add_nav">
-                            <div class="add_nav_div">
-                                <div class="right_text"><label for="{{ f.id_for_label }}">{{ f.label }}:</label></div>
-                                <div class="left_text">{{ f }}</div>
-                            </div>
-                        </nav>
-                        <div class="form-error">{{ f.errors }}</div>
-                        {% endfor %}
-                    </form>
-                    <input class="nav__link_add" type="submit" form="data_add" value="Добавить">
-                    <a class="nav__link_cancel" href="{% url 'company' %}">Отмена</a>
-                    <!--                <input class="nav__link_add" type="submit" form="data_add" value="Отмена">-->
-                </div>
+            <div>
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                </figure>
             </div>
         </div>
     </div>
 </div>
 </body>
+<script>
+  Highcharts.chart('container', {{ chart|safe }});
+</script>
 </html>

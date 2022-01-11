@@ -16,28 +16,36 @@ class Deal(models.Model):
     def __str__(self):
         return str(self.proposal)
 
-    # @property
-    # def stage(self):
-    #     """Этап"""
-    #     return self.proposal_set.all().count()
+    @property
+    def stage(self):
+        """Этап"""
+        a = Proposal.objects.filter(id=self.proposal.id).values('funnel__name')
+        return a[0].get('funnel__name')
 
+    @property
     def price(self):
-        pass
+        a = Proposal.objects.filter(id=self.proposal.id).values('price')
+        return a[0].get('price')
 
+    @property
     def contacts(self):
-        pass
+        a = Proposal.objects.filter(id=self.proposal.id).values('contacts__name')
+        return a[0].get('contacts__name')
 
+    @property
     def company(self):
-        pass
+        a = Proposal.objects.filter(id=self.proposal.id).values('company__name')
+        return a[0].get('company__name')
 
+    @property
     def employee(self):
-        pass
+        a = Proposal.objects.filter(id=self.proposal.id).values('employee__name')
+        return a[0].get('employee__name')
 
+    @property
     def tasks(self):
-        pass
-
-    def funnel(self):
-        pass
+        a = Proposal.objects.filter(id=self.proposal.id).values('tasks__name')
+        return a[0].get('tasks__name')
 
     def get_absolute_url(self):
         """Get id"""
@@ -46,3 +54,6 @@ class Deal(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_deal', kwargs={'deal_id': self.pk})
+
+    class Meta:
+        ordering = ['pk']

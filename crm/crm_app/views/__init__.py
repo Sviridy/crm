@@ -5,3 +5,4 @@ from crm_app.views.contacts_views import ContactsHome, AddContacts, EditContacts
 from crm_app.views.payment_views import PaymentHome, AddPayment, EditPayment, delete_payment
 from crm_app.views.proposal_views import ProposalHome, AddProposal, EditProposal, delete_proposal
 from crm_app.views.deal_views import DealHome, AddDeal, EditDeal, delete_deal
+from crm_app.views.chart_views import  dashboard

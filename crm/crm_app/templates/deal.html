@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link type="text/css" href="{% static 'css/s.css' %}" rel="stylesheet"/>
-    <title>Title</title>
+    <title>CRM</title>
 </head>
 <header class="header">
     <div class="container">
@@ -52,7 +52,7 @@
             <a class="left_choice" href="#">✉</a>
             <a class="left_choice" href="#">📞</a>
             <a class="left_choice" href="#">☎</a>
-            <a class="left_choice" href="#">📊</a>
+            <a class="left_choice" href="{% url 'chart' %}">📊</a>
             <a class="left_choice" href="#">📈</a>
         </div>
         <div class="intro__inner">
@@ -64,9 +64,12 @@
                 <tr>
                     <th>ID</th>
                     <th>Название</th>
-<!--                    <th>Этап</th>-->
+                    <th>Этап</th>
                     <th>Статус</th>
+                    <th>Цена</th>
                     <th>Прибиль</th>
+                    <th>Контакт</th>
+                    <th>Сотрудник</th>
                     <th>Описание</th>
                     <th>Время создания</th>
                     <th>Изменить</th>
@@ -76,9 +79,12 @@
                 <tr>
                     <td>{{d.id}}</td>
                     <td>{{d.proposal}}</td>
-<!--                    <td>{{d.stage}}</td>-->
+                    <td>{{d.stage}}</td>
                     <td>{{d.status}}</td>
+                    <td>{{d.price}}</td>
                     <td>{{d.profit}}</td>
+                    <td>{{d.contacts}}</td>
+                    <td>{{d.employee}}</td>
                     <td>{{d.description}}</td>
                     <td>{{d.time_create}}</td>
                     <td><a class='edit__link' href="{{ d.get_absolute_url }}">✎</a></td>

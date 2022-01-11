@@ -16,3 +16,6 @@ class Payment(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_payment', kwargs={'payment_id': self.pk})
+
+    class Meta:
+        ordering = ['pk']

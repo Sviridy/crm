@@ -21,3 +21,6 @@ class Employee(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_employee', kwargs={'employee_id': self.pk})
+
+    class Meta:
+        ordering = ['pk']

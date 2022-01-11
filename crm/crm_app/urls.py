@@ -31,4 +31,5 @@ urlpatterns = [
     path('deal/add_deal', AddDeal.as_view(), name='add_deal'),
     path('deal/<int:deal_id>/', EditDeal.as_view(), name='edit_deal'),
     path('deal/delete/<int:deal_id>/', delete_deal, name='delete_deal'),
+    path('chart/', dashboard, name='chart'),
 ]

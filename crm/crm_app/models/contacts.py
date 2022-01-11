@@ -26,3 +26,6 @@ class Contacts(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_contacts', kwargs={'contacts_id': self.pk})
+
+    class Meta:
+        ordering = ['pk']

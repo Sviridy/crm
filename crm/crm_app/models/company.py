@@ -23,8 +23,12 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    @property
     def contact(self):
-        pass
+        if len(self.contacts_set.all()) != 0:
+            return self.contacts_set.all()[0]
+        else:
+            return '-'
 
     def get_absolute_url(self):
         """Get id"""
@@ -33,3 +37,6 @@ class Company(models.Model):
     def get_id(self):
         """Get id"""
         return reverse('delete_company', kwargs={'company_id': self.pk})
+
+    class Meta:
+        ordering = ['pk']

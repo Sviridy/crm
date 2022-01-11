@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <link type="text/css" href="{% static 'css/s.css' %}" rel="stylesheet"/>
-    <title>Title</title>
+    <title>CRM</title>
 </head>
 <header class="header">
     <div class="container">
         <div class="header__inner">
             <div class="header_div">
-<!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
-<!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
-<!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
                 <div class="header__logo"><img src="/static/image/003-crm.png"></div>
                 <nav class="nav">
                     <ul>
@@ -48,12 +48,20 @@
 <div class="intro">
     <div class="container">
         <div class="left_menu">
-            <a class="left_choice" href="#">🏠</a>
-            <a class="left_choice" href="#">✉</a>
-            <a class="left_choice" href="#">📞</a>
-            <a class="left_choice" href="#">☎</a>
-            <a class="left_choice" href="#">📊</a>
-            <a class="left_choice" href="#">📈</a>
+            <ul>
+                <li><a class="left_choice" href="#">🏠</a></li>
+                <li><a class="left_choice" href="#">✉</a></li>
+                <li><a class="left_choice" href="#">📞</a></li>
+                <li><a class="left_choice" href="#">☎</a></li>
+                <li><a class="left_choice" href="{% url 'chart' %}">📊</a>
+{#                    <ul class="li">#}
+{#                        <li><a href="{% url 'add_company' %}">Количество заявок по воронке продаж</a></li>#}
+{#                        <li><a href="{% url 'add_company' %}">Компанию</a></li>#}
+{#                        <li><a href="{% url 'add_company' %}">Компанию</a></li>#}
+{#                    </ul>#}
+                </li>
+                <li><a class="left_choice" href="#">📈</a></li>
+            </ul>
         </div>
         <div class="intro__inner">
             <div class="menu__inner">
@@ -76,20 +84,21 @@
                     <th>Удалить</th>
                 </tr>
                 {% for p in proposal %}
-                <tr>
-                    <td>{{p.id}}</td>
-                    <td>{{p.name}}</td>
-                    <td>{{p.price}}</td>
-                    <td>{{p.source}}</td>
-                    <td>{{p.funnel}}</td>
-                    <td>{{p.employee}}</td>
-                    <td>{{p.time_create}}</td>
-                    <td>{{p.contacts}}</td>
-                    <td>{{p.tasks}}</td>
-                    <td>{{p.company}}</td>
-                    <td><a class='edit__link' href="{{ p.get_absolute_url }}">✎</a></td>
-                    <td><a class="del__link" href="{{ p.get_id }}" onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
-                </tr>
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.price }}</td>
+                        <td>{{ p.source }}</td>
+                        <td>{{ p.funnel }}</td>
+                        <td>{{ p.employee }}</td>
+                        <td>{{ p.time_create }}</td>
+                        <td>{{ p.contacts }}</td>
+                        <td>{{ p.tasks }}</td>
+                        <td>{{ p.company }}</td>
+                        <td><a class='edit__link' href="{{ p.get_absolute_url }}">✎</a></td>
+                        <td><a class="del__link" href="{{ p.get_id }}"
+                               onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
+                    </tr>
                 {% endfor %}
             </table>
         </div>
