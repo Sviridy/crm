@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
@@ -8,6 +9,20 @@ class DealHome(ListView):
     model = Deal
     template_name = 'deal.html'
     context_object_name = 'deal'
+
+
+class DealSearch(ListView):
+    """Search employee"""
+    model = Deal
+    template_name = 'deal_search.html'
+    context_object_name = 'deal'
+
+    def get_queryset(self):
+        query1 = self.request.GET.get('name')
+        deal = Deal.objects.filter(
+            Q(proposal__name__icontains=query1) | Q(status__name__icontains=query1) | Q(profit__icontains=query1) | Q(
+                description__icontains=query1))
+        return deal
 
 
 class AddDeal(CreateView):

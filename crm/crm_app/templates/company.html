@@ -10,9 +10,9 @@
     <div class="container">
         <div class="header__inner">
             <div class="header_div">
-<!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
-<!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
-<!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/icons8-crm-система-microsoft-dynamics-31.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/001-relationship.png"></div>-->
+                <!--                <div class="header__logo"><img src="/static/image/002-campaign.png"></div>-->
                 <div class="header__logo"><img src="/static/image/003-crm.png"></div>
                 <nav class="nav">
                     <ul>
@@ -58,6 +58,13 @@
         <div class="intro__inner">
             <div class="menu__inner">
                 <div class="list_table">Все компании</div>
+                <div class="search">
+                    <form action="{% url 'company_search' %}" method="get"><input name='name' type="text"
+                                                                                  placeholder="Поиск" required>
+                        <input class="search_bt" type="submit" value="🔎">
+                        <a class="cancel" href="{% url 'company' %}">♻</a>
+                    </form>
+                </div>
                 <div><a class="add__link" href="{% url 'add_company' %}">+</a></div>
             </div>
             <table>
@@ -74,18 +81,19 @@
                     <th>Удалить</th>
                 </tr>
                 {% for c in company %}
-                <tr>
-                    <td>{{c.id}}</td>
-                    <td>{{c.name}}</td>
-                    <td>{{c.responsible}}</td>
-                    <td>{{c.contact}}</td>
-                    <td>{{c.phone_number_or_fax}}</td>
-                    <td>{{c.city}}</td>
-                    <td>{{c.e_mail}}</td>
-                    <td>{{c.bank}}</td>
-                    <td><a class='edit__link' href="{{ c.get_absolute_url }}">✎</a></td>
-                    <td><a class="del__link" href="{{ c.get_id }}" onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
-                </tr>
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.responsible }}</td>
+                        <td>{{ c.contact }}</td>
+                        <td>{{ c.phone_number_or_fax }}</td>
+                        <td>{{ c.city }}</td>
+                        <td>{{ c.e_mail }}</td>
+                        <td>{{ c.bank }}</td>
+                        <td><a class='edit__link' href="{{ c.get_absolute_url }}">✎</a></td>
+                        <td><a class="del__link" href="{{ c.get_id }}"
+                               onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
+                    </tr>
                 {% endfor %}
             </table>
         </div>

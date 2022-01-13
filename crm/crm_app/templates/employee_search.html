@@ -28,10 +28,10 @@
                             </ul>
                         </li>
                         <li><a href="{% url 'company' %}">Компании</a></li>
-                        <li><a class='choice_top' href="{% url 'proposal' %}">Заявки</a></li>
+                        <li><a href="{% url 'proposal' %}">Заявки</a></li>
                         <li><a href="{% url 'deal' %}">Сделки</a></li>
                         <li><a href="{% url 'contacts' %}">Контакты</a></li>
-                        <li><a href="{% url 'employee' %}">Сотрудники</a></li>
+                        <li><a class='choice_top' href="{% url 'employee' %}">Сотрудники</a></li>
                         <li><a href="{% url 'tasks' %}">Задачи</a></li>
                         <li><a href="{% url 'payment' %}">Оплаты</a></li>
                     </ul>
@@ -48,62 +48,52 @@
 <div class="intro">
     <div class="container">
         <div class="left_menu">
-            <ul>
-                <li><a class="left_choice" href="#">🏠</a></li>
-                <li><a class="left_choice" href="#">✉</a></li>
-                <li><a class="left_choice" href="#">📞</a></li>
-                <li><a class="left_choice" href="#">☎</a></li>
-                <li><a class="left_choice" href="{% url 'chart' %}">📊</a>
-                    {#                    <ul class="li">#}
-                    {#                        <li><a href="{% url 'add_company' %}">Количество заявок по воронке продаж</a></li>#}
-                    {#                        <li><a href="{% url 'add_company' %}">Компанию</a></li>#}
-                    {#                        <li><a href="{% url 'add_company' %}">Компанию</a></li>#}
-                    {#                    </ul>#}
-                </li>
-                <li><a class="left_choice" href="#">📈</a></li>
-            </ul>
+            <a class="left_choice" href="#">🏠</a>
+            <a class="left_choice" href="#">✉</a>
+            <a class="left_choice" href="#">📞</a>
+            <a class="left_choice" href="#">☎</a>
+            <a class="left_choice" href="{% url 'chart' %}">📊</a>
+            <a class="left_choice" href="#">📈</a>
         </div>
         <div class="intro__inner">
             <div class="menu__inner">
-                <div class="list_table">Все Заявки</div>
+                <div class="list_table">Все сотрудники</div>
                 <div class="search">
-                    <form action="{% url 'proposal_search' %}" method="get"><input name='name' type="text"
-                                                                                   placeholder="Поиск" required>
-                        <input class="search_bt" type="submit" value="🔎">
-                        <a class="cancel" href="{% url 'proposal' %}">♻</a>
+                    <form action="{% url 'employee_search' %}" method="get"><input name='name' type="text"
+                                                                                   placeholder="Поиск"
+                                                                                   required>
+                        <input class='search_bt' type="submit" value="🔎">
+                        <a class="cancel" href="{% url 'employee' %}">♻</a>
                     </form>
                 </div>
-                <div><a class="add__link" href="{% url 'add_proposal' %}">+</a></div>
+                <div><a class="add__link" href="{% url 'add_employee' %}">+</a></div>
             </div>
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Название</th>
-                    <th>Цена</th>
-                    <th>Источник</th>
-                    <th>Воронка</th>
-                    <th>Ответственный</th>
-                    <th>Время создания</th>
-                    <th>Контакт</th>
-                    <th>Задача</th>
-                    <th>Компания</th>
+                    <th>Фото</th>
+                    <th>Имя</th>
+                    <th>Дата рождения</th>
+                    <th>Номер</th>
+                    <th>Должность</th>
+                    <th>e_mail</th>
                     <th>Изменить</th>
                     <th>Удалить</th>
                 </tr>
-                {% for p in proposal %}
+                {% for e in employee %}
                     <tr>
-                        <td>{{ p.id }}</td>
-                        <td>{{ p.name }}</td>
-                        <td>{{ p.price }}</td>
-                        <td>{{ p.source }}</td>
-                        <td>{{ p.funnel }}</td>
-                        <td>{{ p.employee }}</td>
-                        <td>{{ p.time_create }}</td>
-                        <td>{{ p.contacts }}</td>
-                        <td>{{ p.tasks }}</td>
-                        <td>{{ p.company }}</td>
-                        <td><a class='edit__link' href="{{ p.get_absolute_url }}">✎</a></td>
-                        <td><a class="del__link" href="{{ p.get_id }}"
+                        <td>{{ e.id }}</td>
+                        <td class="image">{% if e.photo %}
+                            <p><img class="img" src="{{ e.photo.url }}"></p>
+                        {% endif %}
+                        </td>
+                        <td>{{ e.name }}</td>
+                        <td>{{ e.date_of_birth }}</td>
+                        <td>375{{ e.phone_number }}</td>
+                        <td>{{ e.post }}</td>
+                        <td>{{ e.e_mail }}</td>
+                        <td><a class='edit__link' href="{{ e.get_absolute_url }}">✎</a></td>
+                        <td><a class="del__link" href="{{ e.get_id }}"
                                onClick="return window.confirm('Пожалуйста подтвердите удаление');">❌</a></td>
                     </tr>
                 {% endfor %}

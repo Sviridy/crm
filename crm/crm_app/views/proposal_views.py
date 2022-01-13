@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
@@ -12,6 +13,22 @@ class ProposalHome(ListView):
     model = Proposal
     template_name = 'proposal.html'
     context_object_name = 'proposal'
+
+
+class ProposalSearch(ListView):
+    """Search employee"""
+    model = Proposal
+    template_name = 'proposal_search.html'
+    context_object_name = 'proposal'
+
+    def get_queryset(self):
+        query1 = self.request.GET.get('name')
+        proposal = Proposal.objects.filter(
+            Q(name__icontains=query1) | Q(price__icontains=query1) | Q(source__icontains=query1) | Q(
+                funnel__name__icontains=query1) | Q(employee__name__icontains=query1) | Q(
+                contacts__name__icontains=query1) | Q(tasks__name__icontains=query1) | Q(
+                company__name__icontains=query1))
+        return proposal
 
 
 class AddProposal(CreateView):

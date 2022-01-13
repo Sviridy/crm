@@ -17,7 +17,8 @@ class Proposal(models.Model):
     tasks = models.ForeignKey(Tasks, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Задача')
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Компания')
 
-
+    def __str__(self):
+        return self.name
 
     def get_absolute_url(self):
         """Get id"""

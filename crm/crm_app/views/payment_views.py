@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
@@ -8,6 +9,19 @@ class PaymentHome(ListView):
     model = Payment
     template_name = 'payment.html'
     context_object_name = 'payment'
+
+
+class PaymentSearch(ListView):
+    """Search employee"""
+    model = Payment
+    template_name = 'payment_search.html'
+    context_object_name = 'payment'
+
+    def get_queryset(self):
+        query1 = self.request.GET.get('name')
+        payment = Payment.objects.filter(
+            Q(deal__proposal__name__icontains=query1) | Q(date__icontains=query1) | Q(price__icontains=query1))
+        return payment
 
 
 class AddPayment(CreateView):

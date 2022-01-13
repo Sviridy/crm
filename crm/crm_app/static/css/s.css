@@ -551,3 +551,53 @@ textarea {
 .image {
     padding: 0;
 }
+
+.search {
+    text-align: center;
+    display: flex;
+    /*margin: 0;*/
+    max-height: 35px;
+    margin: 4px 2px;
+}
+
+.cancel {
+    /*padding: 0;*/
+    /*text-align: center;*/
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 35px;
+    /*margin: 4px 2px;*/
+    transition-duration: 0.4s;
+    /*cursor: pointer;*/
+    background-color: #ffa861;
+    color: black;
+    border: 2px solid #6e6f77;
+}
+
+.cancel:hover {
+    background-color: #ff7746;
+}
+
+.search_bt {
+    /*padding: 0;*/
+    /*text-align: center;*/
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 33px;
+    /*margin: 4px 2px;*/
+    transition-duration: 0.4s;
+    /*cursor: pointer;*/
+    background-color: #fde56d;
+    color: black;
+    border: 2px solid #6e6f77;
+}
+
+.search_bt:hover {
+    background-color: #f9ff41;
+}
