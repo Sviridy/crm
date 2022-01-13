@@ -11,18 +11,6 @@ class PaymentHome(ListView):
     context_object_name = 'payment'
 
 
-class PaymentSearch(ListView):
-    """Search employee"""
-    model = Payment
-    template_name = 'payment_search.html'
-    context_object_name = 'payment'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        payment = Payment.objects.filter(
-            Q(deal__proposal__name__icontains=query1) | Q(date__icontains=query1) | Q(price__icontains=query1))
-        return payment
-
 
 class AddPayment(CreateView):
     """Add specialization"""

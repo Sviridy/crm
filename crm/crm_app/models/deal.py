@@ -55,5 +55,9 @@ class Deal(models.Model):
         """Get id"""
         return reverse('delete_deal', kwargs={'deal_id': self.pk})
 
+    def print(self):
+        """Get id"""
+        return reverse('print_deal', kwargs={'deal_id': self.pk})
+
     class Meta:
         ordering = ['pk']

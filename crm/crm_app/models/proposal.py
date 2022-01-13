@@ -28,9 +28,6 @@ class Proposal(models.Model):
         """Get id"""
         return reverse('delete_proposal', kwargs={'proposal_id': self.pk})
 
-    def print(self):
-        """Get id"""
-        return reverse('print_proposal', kwargs={'proposal_id': self.pk})
 
     class Meta:
         ordering = ['pk']

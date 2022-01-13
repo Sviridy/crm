@@ -557,7 +557,7 @@ textarea {
     display: flex;
     /*margin: 0;*/
     max-height: 35px;
-    margin: 4px 2px;
+    margin: 6px 2px;
 }
 
 .cancel {

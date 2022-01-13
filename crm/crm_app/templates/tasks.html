@@ -59,16 +59,11 @@
             <div class="menu__inner">
                 <div class="list_table">Все задачи</div>
                 <div class="search">
-                    <form action="{% url 'tasks_search' %}" method="get"><input name='name' type="text"
-                                                                                   placeholder="Поиск"
-                                                                                   required>
-                        <input class="search_bt" type="submit" value="🔎">
-                        <a class="cancel" href="{% url 'tasks' %}">♻</a>
-                    </form>
+                    <input class="form-control" type="text" placeholder="Поиск" id="search-text" onkeyup="tableSearch()">
                 </div>
                 <div><a class="add__link" href="{% url 'add_tasks' %}">+</a></div>
             </div>
-            <table>
+            <table class="table table-striped" id="info-table">
                 <tr>
                     <th>ID</th>
                     <th>Имя</th>
@@ -97,5 +92,25 @@
         </div>
     </div>
 </div>
+<script>
+    function tableSearch() {
+    var phrase = document.getElementById('search-text');
+    var table = document.getElementById('info-table');
+    var regPhrase = new RegExp(phrase.value, 'i');
+    var flag = false;
+    for (var i = 1; i < table.rows.length; i++) {
+        flag = false;
+        for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+            if (flag) break;
+        }
+        if (flag) {
+            table.rows[i].style.display = "";
+        } else {
+            table.rows[i].style.display = "none";
+        }
+
+    }
+}</script>
 </body>
 </html>

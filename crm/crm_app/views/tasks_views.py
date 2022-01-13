@@ -11,20 +11,6 @@ class TasksHome(ListView):
     context_object_name = 'tasks'
 
 
-class TasksSearch(ListView):
-    """Search employee"""
-    model = Tasks
-    template_name = 'tasks_search.html'
-    context_object_name = 'tasks'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        tasks = Tasks.objects.filter(
-            Q(name__icontains=query1) | Q(employee__name__icontains=query1) | Q(text__icontains=query1) | Q(
-                status__name__icontains=query1) | Q(deadline__icontains=query1) | Q(note__icontains=query1))
-        return tasks
-
-
 class AddTasks(CreateView):
     """Add specialization"""
     model = Tasks

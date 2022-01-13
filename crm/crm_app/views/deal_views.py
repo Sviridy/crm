@@ -1,7 +1,13 @@
+import os
+import sys
+from datetime import datetime
+
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
+from docxtpl import DocxTemplate
+
 from crm_app.models import Deal
 
 
@@ -9,20 +15,6 @@ class DealHome(ListView):
     model = Deal
     template_name = 'deal.html'
     context_object_name = 'deal'
-
-
-class DealSearch(ListView):
-    """Search employee"""
-    model = Deal
-    template_name = 'deal_search.html'
-    context_object_name = 'deal'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        deal = Deal.objects.filter(
-            Q(proposal__name__icontains=query1) | Q(status__name__icontains=query1) | Q(profit__icontains=query1) | Q(
-                description__icontains=query1))
-        return deal
 
 
 class AddDeal(CreateView):
@@ -62,3 +54,27 @@ def delete_deal(request, deal_id):
     """Delete employee"""
     Deal.objects.get(id=deal_id).delete()
     return HttpResponseRedirect("/deal/")
+
+
+def print_deal(request, deal_id):
+    """Delete employee"""
+    d = Deal.objects.filter(id=deal_id).values('proposal__name', 'profit', 'proposal__price', 'proposal__employee',
+                                               'proposal__contacts__name', 'proposal__contacts__post',
+                                               'proposal__company__name', 'proposal__company__full_name', 'description',
+                                               'proposal__company__address', 'proposal__company__ynp',
+                                               'proposal__company__b_s', 'proposal__company__bank')
+    print(d[0].get('proposal__name'))
+    sys.path.append('D:\\Python\\crm\\crm\\media\\documents')
+    os.chdir(sys.path[-1])
+    a = datetime.now()
+    doc = DocxTemplate('example.docx')
+    context = {'name': d[0].get('proposal__company'), 'fio': d[0].get('proposal__contacts'),
+               'post': d[0].get('proposal__contacts__post'), 'company': d[0].get('proposal__company__name'),
+               'address': d[0].get('proposal__company__address'), 'price': d[0].get('proposal__price'),
+               'full': d[0].get('proposal__company__full_name'), 'ynp': d[0].get('proposal__company__ynp'),
+               'bs': d[0].get('proposal__company__b_s'), 'bank': d[0].get('proposal__company__bank')}
+    doc.render(context)
+    b = f'{a.date()}_{a.hour}-{a.minute}-{a.second}'
+    doc.save(f'Договор{b}.docx')
+    os.system(f'start D:\\Python\\crm\\crm\\media\\documents\\Договор{b}.docx')
+    return HttpResponseRedirect(f"/deal/{deal_id}")

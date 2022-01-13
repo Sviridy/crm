@@ -11,20 +11,6 @@ class ContactsHome(ListView):
     context_object_name = 'contacts'
 
 
-class ContactsSearch(ListView):
-    """Search employee"""
-    model = Contacts
-    template_name = 'contacts_search.html'
-    context_object_name = 'contacts'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        contacts = Contacts.objects.filter(
-            Q(name__icontains=query1) | Q(post__icontains=query1) | Q(phone_number__icontains=query1) | Q(
-                e_mail__icontains=query1) | Q(company__name__icontains=query1) | Q(status__icontains=query1))
-        return contacts
-
-
 class AddContacts(CreateView):
     """Add specialization"""
     model = Contacts

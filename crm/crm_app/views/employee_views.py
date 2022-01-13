@@ -11,19 +11,6 @@ class EmployeeHome(ListView):
     context_object_name = 'employee'
 
 
-class EmployeeSearch(ListView):
-    """Search employee"""
-    model = Employee
-    template_name = 'employee_search.html'
-    context_object_name = 'employee'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        employee = Employee.objects.filter(
-            Q(name__icontains=query1) | Q(date_of_birth__icontains=query1) | Q(phone_number__icontains=query1) | Q(
-                post__icontains=query1) | Q(e_mail__icontains=query1))
-        return employee
-
 
 class AddEmployee(CreateView):
     """Add specialization"""

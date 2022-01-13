@@ -15,22 +15,6 @@ class ProposalHome(ListView):
     context_object_name = 'proposal'
 
 
-class ProposalSearch(ListView):
-    """Search employee"""
-    model = Proposal
-    template_name = 'proposal_search.html'
-    context_object_name = 'proposal'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        proposal = Proposal.objects.filter(
-            Q(name__icontains=query1) | Q(price__icontains=query1) | Q(source__icontains=query1) | Q(
-                funnel__name__icontains=query1) | Q(employee__name__icontains=query1) | Q(
-                contacts__name__icontains=query1) | Q(tasks__name__icontains=query1) | Q(
-                company__name__icontains=query1))
-        return proposal
-
-
 class AddProposal(CreateView):
     """Add specialization"""
     model = Proposal
@@ -76,17 +60,17 @@ def delete_proposal(request, proposal_id):
     return HttpResponseRedirect("/proposal/")
 
 
-def print_proposal(request, proposal_id):
-    """Delete employee"""
-    d = Proposal.objects.get(id=proposal_id)
-    print(type(d.price))
-    sys.path.append('D:\\Python\\crm\\crm\\media\\documents')
-    os.chdir(sys.path[-1])
-    a = datetime.now()
-    doc = DocxTemplate('example.docx')
-    context = {'name': d.price}
-    doc.render(context)
-    b = f'{a.date()}_{a.hour}-{a.minute}-{a.second}'
-    doc.save(f'Template_render{b}.docx')
-    os.system(f'start D:\\Python\\crm\\crm\\media\\documents\\Template_render{b}.docx')
-    return HttpResponseRedirect(f"/proposal/{proposal_id}")
+# def print_proposal(request, proposal_id):
+#     """Delete employee"""
+#     d = Proposal.objects.get(id=proposal_id)
+#     print(type(d.price))
+#     sys.path.append('D:\\Python\\crm\\crm\\media\\documents')
+#     os.chdir(sys.path[-1])
+#     a = datetime.now()
+#     doc = DocxTemplate('example.docx')
+#     context = {'name': d.price}
+#     doc.render(context)
+#     b = f'{a.date()}_{a.hour}-{a.minute}-{a.second}'
+#     doc.save(f'Договор{b}.docx')
+#     os.system(f'start D:\\Python\\crm\\crm\\media\\documents\\Договор{b}.docx')
+#     return HttpResponseRedirect(f"/proposal/{proposal_id}")

@@ -11,19 +11,19 @@ class CompanyHome(ListView):
     context_object_name = 'company'
 
 
-class CompanySearch(ListView):
-    """Search employee"""
-    model = Company
-    template_name = 'company_search.html'
-    context_object_name = 'company'
-
-    def get_queryset(self):
-        query1 = self.request.GET.get('name')
-        company = Company.objects.filter(
-            Q(name__icontains=query1) | Q(responsible__name__icontains=query1) | Q(
-                phone_number_or_fax__icontains=query1) | Q(city__icontains=query1) | Q(e_mail__icontains=query1) | Q(
-                bank__icontains=query1))
-        return company
+# class CompanySearch(ListView):
+#     """Search employee"""
+#     model = Company
+#     template_name = 'company_search.html'
+#     context_object_name = 'company'
+#
+#     def get_queryset(self):
+#         query1 = self.request.GET.get('name')
+#         company = Company.objects.filter(
+#             Q(name__icontains=query1) | Q(responsible__name__icontains=query1) | Q(
+#                 phone_number_or_fax__icontains=query1) | Q(city__icontains=query1) | Q(e_mail__icontains=query1) | Q(
+#                 bank__icontains=query1))
+#         return company
 
 
 class AddCompany(CreateView):
